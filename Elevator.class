@@ -2,33 +2,46 @@
 
 
 class Elvevator{
-   var $startFloor;
-   var $endFloor;
-   var $currentFloor;
-   var $doorStatus;
-   var occupied = false;
-   var stops = array();
-   var interrupt = false;
+   private i$startFloor;
+   private  $endFloor;
+   private  $currentFloor;
+   priavate  $doorStatus;
+   private  occupied = false;
+   priave   stops = array();
+   private  interrupt = false;
+   private  isAvailable = true;
 
    _constructor($startFloor, $endFloor){
       $this->startFloor = $startFloor;
       $this->endFloor = $endFloor;
    }
 
+   public function isAvailable(){
+      return $this->isAvailable;
+   }
+
+   public function isOccupied(){
+      return $this->occupied;
+   }
+
    function reportFloor(){
        array($this.startFloor,$currentFloor $this.endFloor);
    }
 
-   function reportDoorStatus(){
-      return $this->doorStatus;
-   }
-   
    function go($startFloor,$endFloor){
-     $this->startFllor = $startFllor;
-     $this->endFllor = $endFllor;
+     $this->trips[]=array($startFloor,$endFloor);
+     $this->checkTrips();
+     $this->startFloor = $startFloor;
+     $this->endFloor = $endFloor;
      $this->moveToFloor($startFloor);
      $this->getPassenger();
      $this->moveToFloor($endFloor);
+   }
+   
+   function checkTrips(){
+      if(count($this->trips)>$this->maxTrips)){
+         $this->available = false;
+      }
    }
 
    function getPassenger(){
@@ -46,8 +59,8 @@ class Elvevator{
       
    }
 
-   function addStop($startFloor, $endFllor){
-      $this->addStop($startFllor);
+   function addStop($startFloor, $endFloor){
+      $this->addStop($startFloor);
       if($endFloor > $this->endFloor){
          $this->addSTop($this->endFloor)
          $endFloor;
@@ -67,6 +80,8 @@ class Elvevator{
          if(in_array($currentFloor,$this->stops){
             $this->getPasenger();
             $this->removeStop($currentFloor);
+         }else{
+            $this->passedFloor[]=$currentFloor;
          }
          if($currentFloor <!$startFloor){
             $currentFloor += 1;
@@ -77,9 +92,25 @@ class Elvevator{
       }
    }
 
+   function removeStop($floor){
+      foreach($this->stops as $i = $stop){
+         if($stop) == $floor)
+            unset($this->stops[$i]);
+      }
+   }
 
+   private function openDoor(){
+      $this->doorStatus='open';
+      $this->reportDoorStatus();
+   }
+
+   private function closeDoor(){
+      $this->doorStatus = 'close';
+      $this->reportDoorStatus();
+   }
    
-
-
-
+   function reportDoorStatus(){
+      return $this->doorStatus;
+   }
+ 
 }

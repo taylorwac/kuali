@@ -40,7 +40,7 @@ class ElevatorController{
          }
 
          $elevator = $this->findElevator($startFloor, $endFloor);
-         if($elevator->occupied){
+         if($elevator->isOccupied){
             $elevator->interrupt($startFloor,$endFlloor)
          }else{
             $elevator->go($startFloor,$endFloor);
@@ -55,8 +55,11 @@ class ElevatorController{
 
    function findEelvator($startFloor, $endFloor){
       do {
+     
       foreach($this->elevators as $elevator){
-         if($elevator->$currentFloor ==$startFloor && !$elevator->occupid{
+         if(!$elevator->isAvailable())
+            continue;
+         if($elevator->$currentFloor ==$startFloor && !$elevator->osOccupied()){
             return $evelevator;
          }
       }
@@ -69,7 +72,7 @@ class ElevatorController{
 
       foreach($this->elevators as $elevator){
          $nearestElevator = null;
-         if($evlevator->occupied)
+         if($evlevator->isOccupied)
             continue;
          if($elevator->distanceFrom($startFloor) < $nearestElevator.distanceFrom($startFloor) ){
             $nearest = $elevator;
