@@ -30,8 +30,9 @@ class ElevatorController{
          return;
       }
 
-      $elevator = $this->findElevator($startFllor, $endFloor);
-
+      $elevator = $this->findElevator($startFloor, $endFloor);
+      $elevator->go($startFloor,$endFloor);
+  
       
    }
 
@@ -43,7 +44,7 @@ class ElevatorController{
    function findEelvator($startFloor, $endFloor){
       do {
       foreach($this->elevators as $elevator){
-         if($elevator->$currentFloor ==$startFllor && $elevator->isAvailable()){
+         if($elevator->$currentFloor ==$startFloor && !$elevator->occupid{
             return $evelevator;
          }
       }
@@ -55,9 +56,14 @@ class ElevatorController{
        }
 
       foreach($this->elevators as $elevator){
-         $nearest = null;
-         if($elevator->willpass($startfllor, $endfloor){
-            return $elevator
+         $nearestElevator = null;
+         if($evlevator->occupied)
+            continue;
+         if($elevator->distanceFrom($startFloor) < $nearestElevator.distanceFrom($startFloor) ){
+            $nearest = $elevator;
+         }
+         if($elevator){
+            return $elevator;
          }
        }
 

@@ -6,9 +6,10 @@ class Elvevator{
    var $endFloor;
    var $currentFloor;
    var $doorStatus;
+   var occupied = false;
 
    _constructor($startFloor, $endFloor){
-      $this->startFloor = $startFllor;
+      $this->startFloor = $startFloor;
       $this->endFloor = $endFloor;
    }
 
@@ -20,9 +21,18 @@ class Elvevator{
       return $this->doorStatus;
    }
    
-   function go(){
+   function go($startFloor,$endFloor){
+     if($startFloor < $endFloor){
+      while($startFloor < $endFloor ){
+         $startFllor 
+      }
+     }else{
+      $direction = '-';
+     }
+
      
    }
+
 
    
 
