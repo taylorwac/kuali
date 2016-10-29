@@ -2,12 +2,30 @@
 
 
 class Elvevator{
+   var $startFloor;
+   var $endFloor;
+   var $currentFloor;
+   var $doorStatus;
 
-   _constructor(){
+   _constructor($startFloor, $endFloor){
+      $this->startFloor = $startFllor;
+      $this->endFloor = $endFloor;
    }
 
-   function reportStatus(){
-      return 
+   function reportFllor(){
+       array($this.startFloor,$currentFloor $this.endFloor);
    }
+
+   function reportDoorStatus(){
+      return $this->doorStatus;
+   }
+   
+   function go(){
+     
+   }
+
+   
+
+
 
 }

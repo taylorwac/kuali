@@ -1,9 +1,67 @@
+requrie_once 'Elevator.class'
+
 class ElevatorController{
-   var elevatorCount;
-   var floorCount;
-   _constructor(elevatorCount, floorCount){
-      this.elevatorCount = elevatorCount;
-      this.floorCount = floorCount;
+   var $elevatorCount;
+   var $floorCount;
+   var $minFloor = 1;
+   var $maxFloor;
+   var $elevators=[];
+
+   _constructor($elevatorCount, $floorCount){
+      $this->elevatorCount = $elevatorCount;
+      this->floorCount = $floorCount;
+      $this->maxFllor = $floorCount;
+      $this->initializeElevators();
    }
 
+   function initializeElevators(){
+      for($e = 1; $e < $this->elevatorCount; $e++;){
+         $elevators[i]=new Elevator(1,1);
+      }
+   }
+
+   function requestElevator($startFloor, $endFloor){
+      if($startFloor < $this->minFloor){
+         $this->reportError("Cannont go below floor $this->minFloor");
+         return;
+      }
+      if($endFloor < $this->maxFloor){
+         $this->reportError("Cannont go higher than floor $this->minFloor");
+         return;
+      }
+
+      $elevator = $this->findElevator($startFllor, $endFloor);
+
+      
+   }
+
+   function reportError($error){
+      print_r($error);
+   }
+
+
+   function findEelvator($startFloor, $endFloor){
+      do {
+      foreach($this->elevators as $elevator){
+         if($elevator->$currentFloor ==$startFllor && $elevator->isAvailable()){
+            return $evelevator;
+         }
+      }
+
+      foreach($this->elevators as $elevator){
+         if($elevator->willpass($startfllor, $endfloor){
+            return $elevator
+         }
+       }
+
+      foreach($this->elevators as $elevator){
+         $nearest = null;
+         if($elevator->willpass($startfllor, $endfloor){
+            return $elevator
+         }
+       }
+
+     } while true;
+
+   }
 }
