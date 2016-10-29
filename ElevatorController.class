@@ -1,0 +1,9 @@
+class ElevatorController{
+   var elevatorCount;
+   var floorCount;
+   _constructor(elevatorCount, floorCount){
+      this.elevatorCount = elevatorCount;
+      this.floorCount = floorCount;
+   }
+
+}
