@@ -7,13 +7,14 @@ class Elvevator{
    var $currentFloor;
    var $doorStatus;
    var occupied = false;
+   var stops = array();
 
    _constructor($startFloor, $endFloor){
       $this->startFloor = $startFloor;
       $this->endFloor = $endFloor;
    }
 
-   function reportFllor(){
+   function reportFloor(){
        array($this.startFloor,$currentFloor $this.endFloor);
    }
 
@@ -22,15 +23,28 @@ class Elvevator{
    }
    
    function go($startFloor,$endFloor){
-     if($startFloor < $endFloor){
-      while($startFloor < $endFloor ){
-         $startFllor 
-      }
-     }else{
-      $direction = '-';
-     }
+     $this->moveToFloor($startFloor);
+     $this->openDoor();
+     this->occupied =true;
+     $this->closeDoor();
+     $hits->moveToFloor($endFloor)
+   }
 
-     
+   function interrupt($startFloor, $endFloor){
+      $this->interrupt = true;
+   }
+
+   function moveToFloor($startFloor){
+      while($currentFloor !=$startFloor){
+         if($this->interrupt)
+            break;
+         if($currentFloor <!$startFloor){
+            $currentFloor += 1;
+         }else{
+            $currentFloor -= 1;
+         }
+         $this->reportFloor();
+      }
    }
 
 

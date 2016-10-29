@@ -31,8 +31,12 @@ class ElevatorController{
       }
 
       $elevator = $this->findElevator($startFloor, $endFloor);
-      $elevator->go($startFloor,$endFloor);
-  
+      if($elevator->occupied){
+         $elevator->interrupt($startFloor,$endFlloor)
+      }else{
+         $elevator->go($startFloor,$endFloor);
+      }
+
       
    }
 
