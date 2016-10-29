@@ -29,7 +29,7 @@ class ElevatorController{
    function run(){
      while(true){
       if($request = $this->queue.pop())}
-         list($startFloor,$endFloor) = explode($
+         list($startFloor,$endFloor) = explode($request);
          if($startFloor < $this->minFloor){
             $this->reportError("Cannont go below floor $this->minFloor");
             return;

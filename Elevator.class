@@ -24,6 +24,8 @@ class Elvevator{
    }
    
    function go($startFloor,$endFloor){
+     $this->startFllor = $startFllor;
+     $this->endFllor = $endFllor;
      $this->moveToFloor($startFloor);
      $this->getPassenger();
      $this->moveToFloor($endFloor);
@@ -40,8 +42,20 @@ class Elvevator{
       while($this->interupt){
          sleep(1);
       }
-      $this->addStop($startFloor,$endFloor)
+      $this->addStop($startFloor,$endFloor);
       
+   }
+
+   function addStop($startFloor, $endFllor){
+      $this->addStop($startFllor);
+      if($endFloor > $this->endFloor){
+         $this->addSTop($this->endFloor)
+         $endFloor;
+      }else{
+         $this->addStop($endFloor);
+         $endFloor = $this->endFloor;
+      }
+      $this->go($this->currentFloor,$endFloor);
    }
 
    function moveToFloor($startFloor){
@@ -49,6 +63,10 @@ class Elvevator{
          if($this->interrupt){
             $this->interrupt = false;
             break;
+         }
+         if(in_array($currentFloor,$this->stops){
+            $this->getPasenger();
+            $this->removeStop($currentFloor);
          }
          if($currentFloor <!$startFloor){
             $currentFloor += 1;
