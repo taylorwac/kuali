@@ -6,6 +6,7 @@ class ElevatorController{
    var $minFloor = 1;
    var $maxFloor;
    var $elevators=[];
+   var $queue = [];
 
    _constructor($elevatorCount, $floorCount){
       $this->elevatorCount = $elevatorCount;
@@ -20,24 +21,31 @@ class ElevatorController{
       }
    }
 
-   function requestElevator($startFloor, $endFloor){
-      if($startFloor < $this->minFloor){
-         $this->reportError("Cannont go below floor $this->minFloor");
-         return;
-      }
-      if($endFloor < $this->maxFloor){
-         $this->reportError("Cannont go higher than floor $this->minFloor");
-         return;
-      }
+   function requestElevator($startFloor,$endFloor){
+     $queue[] = array($startFloor,$endFloor); 
+   }
 
-      $elevator = $this->findElevator($startFloor, $endFloor);
-      if($elevator->occupied){
-         $elevator->interrupt($startFloor,$endFlloor)
-      }else{
-         $elevator->go($startFloor,$endFloor);
-      }
 
-      
+   function run(){
+     while(true){
+      if($request = $this->queue.pop())}
+         list($startFloor,$endFloor) = explode($
+         if($startFloor < $this->minFloor){
+            $this->reportError("Cannont go below floor $this->minFloor");
+            return;
+         }
+         if($endFloor < $this->maxFloor){
+            $this->reportError("Cannont go higher than floor $this->minFloor");
+            return;
+         }
+
+         $elevator = $this->findElevator($startFloor, $endFloor);
+         if($elevator->occupied){
+            $elevator->interrupt($startFloor,$endFlloor)
+         }else{
+            $elevator->go($startFloor,$endFloor);
+         }
+      }
    }
 
    function reportError($error){
